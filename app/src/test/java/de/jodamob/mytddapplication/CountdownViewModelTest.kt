@@ -28,11 +28,6 @@ class CountdownViewModelTest {
     }
 
     @Test
-    fun `should start`() {
-        viewModel.start()?.dispose()
-    }
-
-    @Test
     fun `should update`() {
         val steps = mutableListOf<String>()
 
