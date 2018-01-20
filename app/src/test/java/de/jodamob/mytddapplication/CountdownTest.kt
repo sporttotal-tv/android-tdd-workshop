@@ -7,7 +7,6 @@ import com.nhaarman.mockito_kotlin.verifyZeroInteractions
 import org.amshove.kluent.`should be equal to`
 import org.junit.Test
 
-// TODO test the real seconds
 class CountdownTest {
 
     val clock = mock<Clock>()
