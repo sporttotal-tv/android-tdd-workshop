@@ -9,7 +9,6 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.schedulers.Schedulers
 import org.junit.Rule
 import org.junit.Test
@@ -20,9 +19,14 @@ class CountdownActivityTest {
 
     val button = mock<Button>()
     val textView = mock<TextView>()
-    val activity = spy(CoundownActivity()).apply {
-        whenever(findViewById<TextView>(R.id.time_value)).thenReturn(textView)
-        whenever(findViewById<Button>(R.id.start_button)).thenReturn(button)
+    var activity = object : CoundownActivity() {
+        override fun <T : View?> findViewById(id: Int): T {
+            return when(id) {
+                R.id.time_value -> textView
+                R.id.start_button -> button
+                else -> null
+            } as T
+        }
     }
 
     @JvmField
@@ -30,10 +34,11 @@ class CountdownActivityTest {
     val testrule = ToothPickRule(this,"")
 
     val clock = mock<Clock>()
-    @Mock val viewmodel = CountdownViewModel(clock, Schedulers.trampoline())
+    @Mock val viewmodel = CountdownViewModel(clock, Schedulers.trampoline(), Schedulers.trampoline())
 
     @Test
     fun `inflates layout`() {
+        activity = spy(activity)
         activity.onCreate(null)
         verify(activity).setContentView(R.layout.activity_countdown)
     }

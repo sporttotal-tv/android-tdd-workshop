@@ -10,28 +10,27 @@ import android.widget.TextView
 import toothpick.Toothpick
 import javax.inject.Inject
 
-class CoundownActivity : Activity() {
+open class CoundownActivity : Activity() {
 
     @Inject lateinit var viewmodel: CountdownViewModel
+    val counterText : TextView by lazy { findViewById<TextView>(R.id.time_value) }
+    val startButton : Button by lazy { findViewById<Button>(R.id.start_button) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_countdown)
 
         injectFields()
+        counterText.text = viewmodel.counterString.get()
+        startButton.setOnClickListener { viewmodel.start() }
+        viewmodel.counterString.observe()
+    }
 
-        val textView = findViewById<TextView>(R.id.time_value).apply {
-            text = viewmodel.counterString.get()
-        }
-
-        findViewById<Button>(R.id.start_button).setOnClickListener {
-            viewmodel.start()
-        }
-
-        viewmodel.counterString.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(p0: Observable?, p1: Int) {
-                textView.setText((p0 as ObservableField<String>).get())
-            }
+    private fun ObservableField<String>.observe() {
+        addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+                override fun onPropertyChanged(p0: Observable?, p1: Int) {
+                    counterText.setText((p0 as ObservableField<String>).get())
+                }
         })
     }
 
