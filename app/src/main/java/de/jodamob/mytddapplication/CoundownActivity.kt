@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity
 import android.widget.Button
 import android.widget.TextView
 import toothpick.Toothpick
+import toothpick.config.Module
 import javax.inject.Inject
 
 open class CoundownActivity : FragmentActivity() {
@@ -35,6 +36,10 @@ open class CoundownActivity : FragmentActivity() {
     }
 
     private fun injectFields() {
-        Toothpick.inject(this, Toothpick.openScope(""))
+        val scope = Toothpick.openScope("")
+        scope.installModules(Module().apply {
+            bind(CountdownViewModel::class.java).toInstance(CountdownViewModel())
+        })
+        Toothpick.inject(this, scope)
     }
 }
