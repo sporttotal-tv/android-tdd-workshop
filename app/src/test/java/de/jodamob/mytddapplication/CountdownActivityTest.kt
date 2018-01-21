@@ -1,6 +1,7 @@
 package de.jodamob.mytddapplication
 
 import android.app.onCreate
+import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -10,6 +11,7 @@ import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import io.reactivex.schedulers.Schedulers
+import org.amshove.kluent.`should be instance of`
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
@@ -19,7 +21,7 @@ class CountdownActivityTest {
 
     val button = mock<Button>()
     val textView = mock<TextView>()
-    var activity = object : CoundownActivity() {
+    var activity = prepareForTest(object : CoundownActivity() {
         override fun <T : View?> findViewById(id: Int): T {
             return when(id) {
                 R.id.time_value -> textView
@@ -27,7 +29,7 @@ class CountdownActivityTest {
                 else -> null
             } as T
         }
-    }
+    })
 
     @JvmField
     @Rule
@@ -38,7 +40,6 @@ class CountdownActivityTest {
 
     @Test
     fun `inflates layout`() {
-        activity = spy(activity)
         activity.onCreate(null)
         verify(activity).setContentView(R.layout.activity_countdown)
     }
@@ -53,7 +54,7 @@ class CountdownActivityTest {
     fun `updates number`() {
         activity.onCreate(null)
 
-        activity.viewmodel.counter = 5
+        viewmodel.counter = 5
 
         verify(textView).setText("5")
     }
@@ -69,5 +70,10 @@ class CountdownActivityTest {
         }
 
         verify(clock, times(10)).sleep(1000)
+    }
+
+    @Test
+    fun `is app compat`() {
+        activity `should be instance of` FragmentActivity::class
     }
 }

@@ -1,16 +1,16 @@
 package de.jodamob.mytddapplication
 
-import android.app.Activity
 import android.databinding.Observable
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.widget.Button
 import android.widget.TextView
 import toothpick.Toothpick
 import javax.inject.Inject
 
-open class CoundownActivity : Activity() {
+open class CoundownActivity : FragmentActivity() {
 
     @Inject lateinit var viewmodel: CountdownViewModel
     val counterText : TextView by lazy { findViewById<TextView>(R.id.time_value) }
