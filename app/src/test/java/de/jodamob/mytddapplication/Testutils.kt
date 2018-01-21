@@ -25,6 +25,8 @@ fun <T: SupportActivity> prepareForTest(activity: T): T {
         }
         val mockFragmentManager = mockFragmentManager()
         whenever(fragmentManager).thenReturn(mockFragmentManager)
+        val mockApplication = mock<Application>()
+        whenever(application).thenReturn(mockApplication)
     }
 }
 

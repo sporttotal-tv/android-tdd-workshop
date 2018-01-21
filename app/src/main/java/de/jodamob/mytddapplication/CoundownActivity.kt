@@ -1,5 +1,6 @@
 package de.jodamob.mytddapplication
 
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.Observable
 import android.databinding.ObservableField
 import android.databinding.ObservableInt
@@ -38,7 +39,9 @@ open class CoundownActivity : FragmentActivity() {
     private fun injectFields() {
         val scope = Toothpick.openScope("")
         scope.installModules(Module().apply {
-            bind(CountdownViewModel::class.java).toInstance(CountdownViewModel())
+            bind(CountdownViewModel::class.java).toProviderInstance({
+                ViewModelProviders.of(this@CoundownActivity).get(CountdownViewModel::class.java)
+            })
         })
         Toothpick.inject(this, scope)
     }

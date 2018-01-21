@@ -14,7 +14,7 @@ import java.util.*
 
 class CountdownViewModelTest {
 
-    val viewModel = CountdownViewModel(mock<Clock>(), observOn = Schedulers.trampoline())
+    val viewModel = CountdownViewModel(mock<Clock>(), Schedulers.trampoline(), Schedulers.trampoline())
     var disposable : Disposable? = null
 
     @After

@@ -1,7 +1,7 @@
 package de.jodamob.mytddapplication
 
+import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
-import android.databinding.ObservableInt
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 class CountdownViewModel(
         val clock: Clock = SystemClock(),
         val observOn: Scheduler = AndroidSchedulers.mainThread(),
-        val subscribeOn: Scheduler = Schedulers.computation()) {
+        val subscribeOn: Scheduler = Schedulers.computation())  : ViewModel() {
 
     var counter = 10
     set(value) {
