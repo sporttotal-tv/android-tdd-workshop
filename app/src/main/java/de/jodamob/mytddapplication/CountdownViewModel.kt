@@ -2,6 +2,7 @@ package de.jodamob.mytddapplication
 
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import android.view.View
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
