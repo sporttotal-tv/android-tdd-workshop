@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 28
     defaultConfig {
         applicationId "de.jodamob.mytddapplication"
         minSdkVersion 21
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -39,16 +39,14 @@ android {
 dependencies {
 
     kapt 'com.github.stephanenicolas.toothpick:toothpick-compiler:1.1.1'
-    kapt 'com.android.databinding:compiler:3.0.1'
 
     implementation 'com.github.stephanenicolas.toothpick:toothpick-runtime:1.1.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.7'
-    implementation "android.arch.lifecycle:extensions:1.0.0"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "org.amshove.kluent:kluent:1.33"
@@ -59,7 +57,11 @@ dependencies {
     testImplementation 'com.github.dpreussler:android-tdd-utils:v0.1'
     testImplementation 'com.github.dpreussler:KuperReflect:v0.1'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
+}
+repositories {
+    mavenCentral()
 }
