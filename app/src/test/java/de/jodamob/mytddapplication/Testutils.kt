@@ -5,7 +5,7 @@ import android.app.Application
 import android.app.Fragment
 import android.app.FragmentManager
 import android.app.FragmentTransaction
-import android.support.v4.app.SupportActivity
+import androidx.core.app.ComponentActivity
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.whenever
@@ -18,7 +18,7 @@ import org.mockito.internal.util.MockUtil
 fun Any.isSpy() = MockUtil.isSpy(this)
 fun Any.isMock() = MockUtil.isMock(this)
 
-fun <T: SupportActivity> prepareForTest(activity: T): T {
+fun <T: ComponentActivity> prepareForTest(activity: T): T {
     return activity.apply {
         if (!(isSpy() or isMock())) {
             return prepareForTest(spy(this))

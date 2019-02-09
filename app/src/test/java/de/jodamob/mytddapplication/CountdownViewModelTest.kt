@@ -1,7 +1,7 @@
 package de.jodamob.mytddapplication
 
-import android.databinding.Observable
-import android.databinding.ObservableField
+import androidx.databinding.Observable
+import androidx.databinding.ObservableField
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import junit.framework.Assert.assertTrue
@@ -33,7 +33,7 @@ class CountdownViewModelTest {
 
         viewModel.counterString.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(p0: Observable?, p1: Int) {
-                steps.add((p0 as ObservableField<String>).get())
+                steps.add((p0 as ObservableField<String>).get()!!)
             }
         })
         disposable = viewModel.start()

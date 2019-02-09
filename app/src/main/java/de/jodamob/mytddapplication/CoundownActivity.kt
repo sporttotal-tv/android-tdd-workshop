@@ -1,9 +1,9 @@
 package de.jodamob.mytddapplication
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import de.jodamob.mytddapplication.databinding.ActivityCountdownBinding
 import toothpick.Toothpick
 import toothpick.config.Module
