@@ -1,13 +1,12 @@
 package de.jodamob.mytddapplication
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.Observable
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
 import android.widget.Button
 import android.widget.TextView
+import androidx.databinding.Observable
+import androidx.databinding.ObservableField
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProviders
 import toothpick.Toothpick
 import toothpick.config.Module
 import javax.inject.Inject

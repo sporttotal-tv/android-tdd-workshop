@@ -1,25 +1,15 @@
 package de.jodamob.mytddapplication
 
 import android.app.onCreate
-import android.arch.lifecycle.ViewModel
-import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.nhaarman.mockito_kotlin.argumentCaptor
+import androidx.lifecycle.ViewModel
 import com.nhaarman.mockito_kotlin.mock
-import com.nhaarman.mockito_kotlin.spy
-import com.nhaarman.mockito_kotlin.times
-import com.nhaarman.mockito_kotlin.verify
-import io.reactivex.schedulers.Schedulers
 import org.amshove.kluent.`should be instance of`
 import org.amshove.kluent.`should be`
-import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import toothpick.Scope
 import toothpick.Toothpick
-import toothpick.testing.ToothPickRule
 
 class CountdownActivityInjectionTest {
 

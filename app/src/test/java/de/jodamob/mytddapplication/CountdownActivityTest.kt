@@ -1,10 +1,10 @@
 package de.jodamob.mytddapplication
 
 import android.app.onCreate
-import android.support.v4.app.FragmentActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import com.nhaarman.mockito_kotlin.argumentCaptor
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
